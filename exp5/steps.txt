@@ -1,0 +1,132 @@
+simulator= https://browserkits.com/en/tools/pcap-viewer
+
+
+
+Step-by-Step Installation and Procedure
+PART 1 – Install Wireshark
+Step 1: Download Wireshark
+
+Official website:
+
+Wireshark Download
+
+Step 2: Install Wireshark
+Windows
+Download .exe installer
+Click Next → Next → Install
+Linux (Ubuntu)
+sudo apt update
+sudo apt install wireshark
+Step 3: Launch Wireshark
+
+Open:
+
+Wireshark
+
+You will see:
+
+WiFi interface
+Ethernet interface
+Step 4: Select Network Interface
+
+Choose:
+
+WiFi → if using wireless internet
+Ethernet → if using LAN
+
+Step 5: Start Packet Capture
+
+Click:
+
+Start
+
+Wireshark begins capturing packets.
+
+PART 2 – Observe TCP Packets
+Step 6: Generate TCP Traffic
+
+Open browser and visit:
+
+https://google.com
+
+This generates TCP packets.
+
+Step 7: Apply TCP Filter
+
+In Wireshark filter box type:
+
+tcp
+
+Press Enter.
+
+Step 8: Observe TCP Datagram
+
+You will see:
+
+Source IP
+Destination IP
+TCP Port
+Sequence Number
+Acknowledgement
+TCP Datagram Structure
+Source Port
+Destination Port
+Sequence Number
+Acknowledgement
+Flags
+Window Size
+Checksum
+Data
+PART 3 – Observe UDP Packets
+Step 9: Generate UDP Traffic
+
+Open Command Prompt / Terminal:
+
+Windows
+nslookup google.com
+Linux
+dig google.com
+
+DNS uses UDP.
+
+Step 10: Apply UDP Filter
+
+In Wireshark filter:
+
+udp
+
+Press Enter.
+
+Step 11: Observe UDP Datagram
+
+UDP packet contains:
+
+Source Port
+Destination Port
+Length
+Checksum
+Data
+UDP Datagram Structure
+Source Port
+Destination Port
+Length
+Checksum
+Data
+PART 4 – Install tcpdump
+Step 12: Install tcpdump
+Ubuntu/Linux
+sudo apt install tcpdump
+Step 13: Capture Packets Using tcpdump
+
+Run:
+
+sudo tcpdump
+
+Captures live packets.
+
+Step 14: Capture Only TCP Packets
+sudo tcpdump tcp
+Step 15: Capture Only UDP Packets
+sudo tcpdump udp
+Step 16: Save Captured Packets
+sudo tcpdump -w capture.pcap

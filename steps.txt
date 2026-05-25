@@ -1,0 +1,216 @@
+# README — VPN Setup and Configure using Java Commands (Windows)
+
+## Experiment No: 11
+
+## Title: Setup and Configure VPN Connection using Java Commands
+
+---
+
+## AIM
+
+To write a Java program to setup and configure a VPN connection using Java commands.
+
+---
+
+# SOFTWARE REQUIREMENTS
+
+* Windows 10/11
+* Java JDK
+* OpenVPN
+* VPN `.ovpn` configuration file
+
+---
+
+# INSTALLATION STEPS
+
+## Step 1: Install Java
+
+Download and install Java JDK:
+
+[Oracle Java Downloads](https://www.oracle.com/java/technologies/downloads/?utm_source=chatgpt.com)
+
+Verify installation:
+
+```bash
+java --version
+javac --version
+```
+
+---
+
+## Step 2: Install OpenVPN
+
+Download OpenVPN:
+
+[OpenVPN Official Website](https://openvpn.net/community-downloads/?utm_source=chatgpt.com)
+
+After installation verify:
+
+```bash
+openvpn --version
+```
+
+---
+
+# PROJECT FILE
+
+Create file:
+
+```text
+VPNConfiguration.java
+```
+
+---
+
+# JAVA PROGRAM
+
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class VPNConfiguration {
+
+    public static void main(String[] args) {
+
+        try {
+
+            // Replace with your VPN config file path
+            String[] commands = {
+                "openvpn",
+                "--config",
+                "C:\\vpn\\myconfig.ovpn"
+            };
+
+            ProcessBuilder builder = new ProcessBuilder(commands);
+
+            builder.redirectErrorStream(true);
+
+            Process process = builder.start();
+
+            // Read command output
+            BufferedReader reader =
+                new BufferedReader(
+                    new InputStreamReader(process.getInputStream())
+                );
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+
+                System.out.println(line);
+            }
+
+            // Wait for process completion
+            int exitCode = process.waitFor();
+
+            System.out.println("Process exited with code " + exitCode);
+
+        } catch (IOException | InterruptedException e) {
+
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+---
+
+# IMPORTANT
+
+Replace:
+
+```text
+C:\vpn\myconfig.ovpn
+```
+
+with your actual VPN configuration file path.
+
+Example:
+
+```text
+C:\Users\YourName\Downloads\vpnconfig.ovpn
+```
+
+---
+
+# HOW TO EXECUTE
+
+## Step 1: Open Command Prompt
+
+Go to project folder:
+
+```bash
+cd Desktop
+```
+
+---
+
+## Step 2: Compile Program
+
+```bash
+javac VPNConfiguration.java
+```
+
+---
+
+## Step 3: Run Program
+
+```bash
+java VPNConfiguration
+```
+
+---
+
+# EXPECTED OUTPUT
+
+```text
+Initialization Sequence Completed
+Process exited with code 0
+```
+
+---
+
+# COMMON ERRORS
+
+## Error: openvpn not recognized
+
+Fix:
+
+* Add OpenVPN to Windows PATH
+* Or provide full OpenVPN path
+
+Example:
+
+```java
+String[] commands = {
+    "C:\\Program Files\\OpenVPN\\bin\\openvpn.exe",
+    "--config",
+    "C:\\vpn\\myconfig.ovpn"
+};
+```
+
+---
+
+## Error: Access Denied
+
+Run:
+
+* Command Prompt as Administrator
+
+---
+
+## Error: Config file not found
+
+Check file path carefully.
+
+---
+
+# CONCEPT
+
+VPN secure connection:
+
+Secure\ Encrypted\ Tunnel\ Between\ Client\ and\ VPN\ Server
+
+---
+

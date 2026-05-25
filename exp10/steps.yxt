@@ -1,0 +1,50 @@
+How to Execute
+Step 1: Create File
+
+Save the file as:
+
+FirewallConfigurator.java
+Step 2: Open Terminal / CMD
+
+Go to the folder containing the file.
+
+Example:
+
+cd Downloads
+Step 3: Compile
+javac FirewallConfigurator.java
+Step 4: Run as Administrator
+In Windows:
+
+Open Command Prompt as Administrator
+
+Then run:
+
+java FirewallConfigurator
+Expected Output
+Firewall rule added successfully.
+Verify Firewall Rule
+
+Open:
+
+Windows Defender Firewall
+→ Advanced Settings
+→ Inbound Rules
+
+You will see the created firewall rule.
+
+What This Program Does
+
+The command used:
+
+netsh advfirewall firewall add rule
+
+adds a new firewall rule for:
+
+TCP protocol
+Incoming traffic
+Port 80
+
+Firewall rule concept:
+
+Traffic Allowed on TCP Port 80
